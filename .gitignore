@@ -1,0 +1,7 @@
+*
+!.gitignore
+!main.py
+!menu.yaml
+!uv.lock
+!pyproject.toml
+!README.md

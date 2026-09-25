@@ -1,0 +1,13 @@
+[project]
+name = "staticfast-menu-creater"
+version = "0.1.0"
+requires-python = ">=3.14"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+  { name = "smahm006", email = "soh.mahmood@fastmail.com" }
+]
+dependencies = [
+    "playwright>=1.63.0",
+    "pyyaml>=6.0.3",
+]

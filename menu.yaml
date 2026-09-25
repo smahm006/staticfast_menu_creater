@@ -1,0 +1,80 @@
+design: Classic
+restaurant:
+  name: SM Home
+  tagline: For those with an international palate
+  address: ""
+  phone: ""
+  footer: ""
+  logo: "/home/smahm/lab/projects/public/staticfast_menu_creater/international_cuisine_logo.jpg"
+sections:
+  breakfast:
+    - item_name: "Falafel w/ Hummus"
+      item_description: |
+        Note: Using black or white chana
+        Combo: Tea and Croissant
+    - item_name: "Sunny side up egg"
+      item_description: |
+        Grain: Paratah / Brown Bread
+        Combo: Tea and French Toast
+    - item_name: "Mexican Omelette"
+      item_description: |
+        Grain: Paratah / Brown Bread
+        Combo: Tea and French Toast
+    - item_name: "Mushroom Omelette"
+      item_description: |
+        Grain: Paratah / Brown Bread
+        Combo: Tea and French Toast
+    - item_name: "Paratah with curries"
+      item_description: |
+        Curry options: Chanay, Bong Pi, Maghaz
+        Grain: Paratah / Brown Bread
+        Combo: Tea and French Toast
+  main_meal:
+    - item_name: "Kima curry"
+      item_description: |
+         optional vegetable (potato, onion, tomato) of choice in curry
+         Grain: Roti / Porrdige
+         Sides: Fresh salad / Green raita
+    - item_name: "Chicken Arvi shorba"
+      item_description: |
+         Grain: Roti / Porrdige
+         Sides: Fresh Salad / Pickle / Kabab
+    - item_name: "Creamy spinach curry"
+      item_description: |
+         Grain: Roti / Rice / Porridge
+         Sides: Fresh Salad / Kabab
+    - item_name: "Chicken lemon curry"
+      item_description: |
+         Grain: Roti / Porridge
+         Sides: Fresh Salad / Soup
+    - item_name: "Kima roti"
+      item_description: |
+         Sides: Sweet or Sour Yoghurt
+    - item_name: "Chinese fried rice"
+      item_description: |
+         Sides: Soup
+    - item_name: "Pasta - Creamy mushroom sauce"
+      item_description: |
+         Sides: Fresh Salad
+  dessert:
+    - item_name: "Biscuits"
+      item_description: "Click, Prince, Party Pik, Marie, Oreo"
+    - item_name: "Croissant"
+    - item_name: "Cinabbon"
+    - item_name: "French Toast"
+    - item_name: "Chocolate Bar"
+      item_description: "Nestle caramel crunch, Snickers"
+  snacks:
+    - item_name: "Fuits"
+      item_description: "Mangoes, Apples, Bananas, Strawberries, Melon, Watermelon"
+    - item_name: "Nuts"
+      item_description: "Almonds, Walnuts, Cashew, Pistachio, Peanut, Macadamia"
+    - item_name: "Chips"
+      item_description: "Lays"
+  drinks:
+    - item_name: "Tea/Kahwa"
+      item_description: "Milk, Black, Ginger, Lemon, Orange, Mint"
+    - item_name: "Soda"
+      item_description: "Coca-cola, Pepsi, 7Up, Sprite, Fanta, Marinda, Mountain Dew"
+    - item_name: "Mocktails"
+      item_description: "Pineapple Lime Fizz, Cranberry Ginger Lime, Cucumber Mint Cooler"
