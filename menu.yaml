@@ -10,10 +10,15 @@ restaurant:
 # to lists of items. Each top-level section starts on a new page, and so does
 # each sub-section of the sections listed here. Other sub-sections flow on.
 # Dishes name a drink and dessert group, matching the sub-sections below.
+# item_code (optional) is printed with a QR code holding it: GEO TIME VEG NN,
+# e.g. SATN01, where GEO is SA/ME/AF/EA/EU/NA, TIME is T (tied to a meal time)
+# or A (anytime), VEG is V (vegetarian) or N (non-veg), and NN numbers the
+# dishes within a GEO.
 page_per_subsection: [main]
 sections:
   breakfast:
     - item_name: "Falafel"
+      item_code: "MEAV01"
       item_description: |
         Main: Falafel (Black or White Chana)
         Grain: Khubz / Paratha
@@ -22,6 +27,7 @@ sections:
         Drink: Milk Tea
         Dessert: Leavened Bakes
     - item_name: "Sunny Side Up Egg"
+      item_code: "EUTV01"
       item_description: |
         Main: Sunny Side Up Eggs
         Grain: Paratha / Brown Bread
@@ -29,6 +35,7 @@ sections:
         Drink: Milk Tea
         Dessert: Leavened Bakes
     - item_name: "Mexican Omelette"
+      item_code: "NATV01"
       item_description: |
         Main: Omelette with Peppers, Onion, Tomato & Chilli
         Grain: Paratha / Brown Bread
@@ -36,6 +43,7 @@ sections:
         Drink: Milk Tea
         Dessert: Leavened Bakes
     - item_name: "Mushroom Omelette"
+      item_code: "EUTV02"
       item_description: |
         Main: Omelette with Mushrooms
         Grain: Paratha / Brown Bread
@@ -43,6 +51,7 @@ sections:
         Drink: Milk Tea
         Dessert: Leavened Bakes
     - item_name: "Paratha with Curries"
+      item_code: "SATN01"
       item_description: |
         Main: Chanay / Bong Paye / Maghaz
         Grain: Paratha / Brown Bread
@@ -52,6 +61,7 @@ sections:
   main:
     south_asian:
       - item_name: "Qeema Salan"
+        item_code: "SATN02"
         item_description: |
           Main: Qeema + Veg of choice (Capsicum / Matar / Aloo)
           Grain: Roti / Porridge
@@ -59,6 +69,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "Qeema Roti"
+        item_code: "SAAN03"
         item_description: |
           Main: Qeema
           Grain: Roti
@@ -66,6 +77,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "Chicken Shorba"
+        item_code: "SATN04"
         item_description: |
           Main: Chicken + Aloo / Arvi
           Grain: Roti / Porridge
@@ -73,6 +85,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "Chicken Palak"
+        item_code: "SATN05"
         item_description: |
           Main: Chicken + Palak + Cream
           Grain: Roti / Pilau / Porridge
@@ -80,6 +93,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "Aloo Palak"
+        item_code: "SATV06"
         item_description: |
           Main: Aloo + Palak + Cream
           Grain: Roti / Pilau / Porridge
@@ -87,6 +101,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "Paneer Palak"
+        item_code: "SATV07"
         item_description: |
           Main: Paneer + Palak + Cream
           Grain: Roti / Pilau / Porridge
@@ -94,6 +109,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "Chicken Lemon Curry"
+        item_code: "SATN08"
         item_description: |
           Main: Chicken + Lemon Gravy
           Grain: Roti / Porridge
@@ -101,6 +117,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "Chicken Masala Pilau"
+        item_code: "SATN09"
         item_description: |
           Main: Chicken + Masala
           Grain: Rice
@@ -108,6 +125,7 @@ sections:
           Drink: Fizzy
           Dessert: Fruit
       - item_name: "Chicken Lemon Pilau"
+        item_code: "SATN10"
         item_description: |
           Main: Chicken + Lemon
           Grain: Rice
@@ -115,6 +133,7 @@ sections:
           Drink: Fizzy
           Dessert: Fruit
       - item_name: "Masala Mutton Champay / Ribs"
+        item_code: "SATN11"
         item_description: |
           Main: Masala Mutton Champay or Ribs
           Grain: Naan
@@ -122,6 +141,7 @@ sections:
           Drink: Fizzy
           Dessert: Fruit
       - item_name: "Namkeen Gosht"
+        item_code: "SATN12"
         item_description: |
           Main: Fried Mutton
           Grain: Naan
@@ -129,6 +149,7 @@ sections:
           Drink: Fizzy
           Dessert: Fruit
       - item_name: "Balochi Sajji"
+        item_code: "SATN13"
         item_description: |
           Main: Roasted Mutton / Chicken
           Grain: Kabli Pilau
@@ -137,6 +158,7 @@ sections:
           Drink: Fizzy
           Dessert: Fruit
       - item_name: "Rahu Fried Fish"
+        item_code: "SATN14"
         item_description: |
           Main: Fried Rahu Fish
           Grain: Naan
@@ -146,6 +168,7 @@ sections:
           Dessert: Fruit
     middle_eastern:
       - item_name: "Shawarma"
+        item_code: "MEAN02"
         item_description: |
           Main: Chicken / Beef / Doner / Tuna
           Grain: Khubz / Saj Bread / Buckwheat Wrap
@@ -155,6 +178,7 @@ sections:
           Dessert: Unleavened Sweets
       # Mandi recipe: https://www.youtube.com/watch?v=ENuJ9FH3nbg
       - item_name: "Arabian Chicken Rice"
+        item_code: "METN03"
         item_description: |
           Main: Chicken
           Grain: Mandi / Madhbi / Madfoon / Kabsa Rice
@@ -164,6 +188,7 @@ sections:
           Dessert: Fruit
       # Recipe: https://www.youtube.com/watch?v=naAuJoFoAFI
       - item_name: "Turkish Pide"
+        item_code: "MEAN04"
         item_description: |
           Main: Cheese + Meat (Pepperoni / Chicken / Doner)
           Grain: Whole Wheat Bread
@@ -172,6 +197,7 @@ sections:
           Dessert: Leavened Bakes
     african:
       - item_name: "Mbakbaka (Libyan Pasta)"
+        item_code: "AFTN01"
         item_description: |
           Main: Meat + Tomato Sauce
           Grain: Ditalini Pasta
@@ -179,6 +205,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "West African Jollof Rice + Fried Plantains"
+        item_code: "AFTN02"
         item_description: |
           Main: Meat + Fried Plantains
           Grain: Rice cooked Jollof-style in tomato sauce
@@ -187,6 +214,7 @@ sections:
           Dessert: Fruit
     east_asian:
       - item_name: "Chinese Chicken Fried Rice"
+        item_code: "EATN01"
         item_description: |
           Main: Stir Fry Chicken + Roasted Veg
           Grain: Rice
@@ -194,6 +222,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "Korean Beef Stir Fry"
+        item_code: "EATN02"
         item_description: |
           Main: Korean-style BBQ Beef + Roasted Veg
           Grain: Rice
@@ -201,6 +230,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "Kung Pao Chicken"
+        item_code: "EATN03"
         item_description: |
           Main: Kung Pao Chicken + Fried Peanuts
           Grain: Steamed Rice / Cauliflower Rice
@@ -208,6 +238,7 @@ sections:
           Drink: Herbal Kahwa
           Dessert: Fruit
       - item_name: "Chicken Chow Mein"
+        item_code: "EAAN04"
         item_description: |
           Main: Stir Fry Chicken + Vegetables
           Grain: Egg Noodles / Buckwheat Noodles
@@ -216,6 +247,7 @@ sections:
           Dessert: Fruit
     european:
       - item_name: "Spaghetti and Meatballs"
+        item_code: "EUTN03"
         item_description: |
           Main: Meatballs + Tomato Sauce
           Grain: Spaghetti
@@ -223,6 +255,7 @@ sections:
           Drink: Mocktails
           Dessert: Leavened Bakes
       - item_name: "Lasagna"
+        item_code: "EUTN04"
         item_description: |
           Main: Mince Meat, Tomato Sauce, Béchamel Sauce, Cheese and Veg
           Grain: Lasagna Sheets / Fried Eggplant Layers
@@ -230,6 +263,7 @@ sections:
           Drink: Mocktails
           Dessert: Leavened Bakes
       - item_name: "Chicken Alfredo Pasta"
+        item_code: "EUTN05"
         item_description: |
           Main: Chicken + Alfredo Sauce
           Grain: Small Penne Pasta / Zoodles (Zucchini Noodles)
@@ -237,6 +271,7 @@ sections:
           Drink: Mocktails
           Dessert: Leavened Bakes
       - item_name: "Creamy Mushroom Pasta"
+        item_code: "EUTV06"
         item_description: |
           Main: Mushrooms + Cream Sauce
           Grain: Pasta
@@ -244,6 +279,7 @@ sections:
           Drink: Mocktails
           Dessert: Leavened Bakes
       - item_name: "Pizza"
+        item_code: "EUAN07"
         item_description: |
           Main: Cheese, Sauce and Toppings of choice
           Grain: Regular Crust / Almond Flour Crust / Chicken Mince Crust
@@ -251,6 +287,7 @@ sections:
           Drink: Fizzy
           Dessert: Unleavened Sweets
       - item_name: "Roasted Garlic & Tomato Soup"
+        item_code: "EUAV08"
         item_description: |
           Main: Roasted Garlic + Tomato + Basil + Cream
           Grain: Garlic Bread
@@ -258,6 +295,7 @@ sections:
           Drink: Mocktails
           Dessert: Leavened Bakes
       - item_name: "Spinach & Mushroom Quiche"
+        item_code: "EUAV09"
         item_description: |
           Main: Spinach + Mushroom + Egg
           Grain: Shortcrust Pastry / Crustless
@@ -265,6 +303,7 @@ sections:
           Drink: Milk Tea
           Dessert: Leavened Bakes
       - item_name: "Roast Garlic Butter Chicken"
+        item_code: "EUTN10"
         item_description: |
           Main: Whole Roast Chicken
           Grain: Dinner Rolls
@@ -272,6 +311,7 @@ sections:
           Drink: Mocktails
           Dessert: Leavened Bakes
       - item_name: "Chicken Pie"
+        item_code: "EUAN11"
         item_description: |
           Main: Chicken + Béchamel Sauce
           Grain: Puff Pastry
@@ -280,6 +320,7 @@ sections:
           Dessert: Leavened Bakes
     north_american:
       - item_name: "Smash Burger"
+        item_code: "NAAN02"
         item_description: |
           Main: Beef Mince Patty + Mayo Sauce
           Grain: Brioche Bun / Lettuce Wrap
@@ -287,6 +328,7 @@ sections:
           Drink: Fizzy
           Dessert: Unleavened Sweets
       - item_name: "Zinger Burger"
+        item_code: "NAAN03"
         item_description: |
           Main: Fried Chicken Patty + Big Mac Sauce + Relish + Lettuce
           Grain: Sesame Bun
@@ -294,6 +336,7 @@ sections:
           Drink: Fizzy
           Dessert: Unleavened Sweets
       - item_name: "Fish Burger"
+        item_code: "NAAN04"
         item_description: |
           Main: Fried Fish Fillet + Gherkins
           Grain: Brioche Bun
@@ -302,6 +345,7 @@ sections:
           Drink: Fizzy
           Dessert: Unleavened Sweets
       - item_name: "Fried & Glazed Chicken Wings"
+        item_code: "NAAN05"
         item_description: |
           Main: Fried & Glazed Chicken Wings
           Grain: Dinner Rolls
@@ -309,6 +353,7 @@ sections:
           Drink: Fizzy
           Dessert: Unleavened Sweets
       - item_name: "Chicken Tender Plate"
+        item_code: "NAAN06"
         item_description: |
           Main: Crispy Chicken Tenders
           Grain: Cheesy Garlic Bread
@@ -317,6 +362,7 @@ sections:
           Drink: Fizzy
           Dessert: Unleavened Sweets
       - item_name: "Chili's-Style Chicken Steak"
+        item_code: "NATN07"
         item_description: |
           Main: Pan-fried Chicken Steak + Gravy + Sautéed Vegetables
           Grain: Corn / Buns
@@ -324,6 +370,7 @@ sections:
           Drink: Fizzy
           Dessert: Leavened Bakes
       - item_name: "Beef Steak"
+        item_code: "NATN08"
         item_description: |
           Main: Pan-fried Beef Steak + Gravy
           Grain: Garlic Bread
@@ -331,6 +378,7 @@ sections:
           Drink: Fizzy
           Dessert: Leavened Bakes
       - item_name: "Chipotle-Style Bowl"
+        item_code: "NAAN09"
         item_description: |
           Main: Shredded Chicken + Chopped Vegetables + Dressing
           Grain: Quinoa / Rice

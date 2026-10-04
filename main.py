@@ -1,10 +1,13 @@
 import argparse
+import re
 from pathlib import Path
 
+import segno
 import yaml
 from playwright.sync_api import Page, sync_playwright
 
 DESIGNS = ["Elegant", "Modern", "Classic", "Casual"]
+ITEM_CODE = re.compile(r"(SA|ME|AF|EA|EU|NA)[TA][VN]\d{2}")
 LAYOUT_CSS = Path(__file__).with_name("layout.css").read_text()
 LAYOUT_JS = Path(__file__).with_name("layout.js").read_text()
 
@@ -78,6 +81,7 @@ def parse_groups(config: dict) -> list[dict]:
     if unknown:
         raise MenuConfigError(f"page_per_subsection names unknown sections: {sorted(unknown)}")
     groups = []
+    codes = set()
     for key, value in sections.items():
         if isinstance(value, dict):
             if not value:
@@ -85,12 +89,37 @@ def parse_groups(config: dict) -> list[dict]:
             subsections = [{"title": section_title(k), "items": v} for k, v in value.items()]
         else:
             subsections = [{"title": None, "items": value}]
+        for sub in subsections:
+            for item in sub["items"] or []:
+                check_item_code(item, codes)
         groups.append({
             "title": section_title(key),
             "page_per_subsection": key in page_per_subsection,
             "subsections": subsections,
         })
     return groups
+
+
+def check_item_code(item: dict, codes: set[str]):
+    code = item.get("item_code")
+    if code is None:
+        return
+    if not ITEM_CODE.fullmatch(code):
+        raise MenuConfigError(f"item '{item.get('item_name')}' has invalid item_code '{code}'")
+    if code in codes:
+        raise MenuConfigError(f"item_code '{code}' is used more than once")
+    codes.add(code)
+
+
+def item_qr(item: dict) -> dict | None:
+    code = item.get("item_code")
+    if not code:
+        return None
+    # Standard QR, not the Micro QR segno picks for short data: most phone
+    # cameras cannot read Micro QR. The 4-module border is the quiet zone
+    # scanners need, transparent so the page background shows through.
+    qr = segno.make_qr(code, error="m")
+    return {"code": code, "src": qr.png_data_uri(scale=12, border=4, dark="#2c2820", light=None)}
 
 
 def add_menu_sections(groups: list[dict], page: Page):
@@ -141,7 +170,10 @@ def download_menu_pdf(config: dict, groups: list[dict], page: Page, output: str)
         {
             "title": g["title"],
             "pagePerSubsection": g["page_per_subsection"],
-            "subsections": [sub["title"] for sub in g["subsections"]],
+            "subsections": [
+                {"title": sub["title"], "qr": [item_qr(item) for item in sub["items"]]}
+                for sub in g["subsections"]
+            ],
         }
         for g in groups
     ]

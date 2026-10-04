@@ -21,5 +21,12 @@ body { padding: 0 !important; min-height: 0 !important; }
 }
 
 .sm-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
-.item-desc { white-space: pre-line; max-width: none; }
+.item-desc { max-width: none; }
 
+/* Item code and its QR, to the right of the item text. The image includes
+   the QR quiet zone; 1in keeps each module large enough to scan from print. */
+.item.has-qr { display: flex; gap: 4px; align-items: flex-start; }
+.item-text { flex: 1; min-width: 0; }
+.item-qr { flex: none; width: 1in; text-align: center; }
+.item-qr img { display: block; width: 1in; height: 1in; image-rendering: pixelated; }
+.item-code { margin-top: -6px; font-size: 9.5px; letter-spacing: 1px; color: #5a503c; }

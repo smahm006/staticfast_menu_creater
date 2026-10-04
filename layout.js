@@ -7,9 +7,10 @@
 // its title. The document height is an exact number of pages, so the capture
 // has no blank tail.
 //
-// groups: [{title, pagePerSubsection, subsections: [title | null, ...]}], in the same order the
-// sections were submitted. A null sub-section title means the items belong
-// directly to the top-level section.
+// groups: [{title, pagePerSubsection, subsections: [{title | null, qr: [{code, src} | null]}]}],
+// in the same order the sections were submitted. A null sub-section title means
+// the items belong directly to the top-level section. qr holds, per item, the
+// item code and its QR image, shown to the right of the item text.
 async (groups) => {
     await document.fonts.ready;
 
@@ -21,6 +22,28 @@ async (groups) => {
     const header = document.querySelector('.header');
     const footer = document.querySelector('.footer');
 
+    const withQr = (item, qr) => {
+        if (!qr) return item;
+        const text = document.createElement('div');
+        text.className = 'item-text';
+        text.append(...item.childNodes);
+        const block = document.createElement('div');
+        block.className = 'item-qr';
+        const img = Object.assign(document.createElement('img'), {src: qr.src, alt: qr.code});
+        block.append(img, Object.assign(document.createElement('div'), {className: 'item-code', textContent: qr.code}));
+        item.classList.add('has-qr');
+        item.append(text, block);
+        return item;
+    };
+    // One block per description line instead of white-space: pre-line, which
+    // html2canvas draws over itself when a line wraps.
+    const splitLines = (item) => {
+        const desc = item.querySelector('.item-desc');
+        if (!desc) return item;
+        const lines = desc.textContent.split('\n').map((l) => l.trim()).filter(Boolean);
+        desc.replaceChildren(...lines.map((l) => Object.assign(document.createElement('div'), {textContent: l})));
+        return item;
+    };
     const titled = (className, text) => {
         const el = document.createElement('div');
         el.className = className;
@@ -49,7 +72,7 @@ async (groups) => {
     };
 
     groups.forEach((group, g) => {
-        group.subsections.forEach((subtitle, s) => {
+        group.subsections.forEach(({title: subtitle, qr}, s) => {
             const headings = [];
             if (g === 0 && s === 0 && header) headings.push(header);
             if (s === 0) headings.push(titled('section-title', group.title));
@@ -57,7 +80,11 @@ async (groups) => {
             if (s === 0 || group.pagePerSubsection) newPage();
             let startsPage = frame.childElementCount === 0;
             let block = openBlock(headings);
-            for (const item of sections.shift().querySelectorAll('.item')) {
+            const items = [...sections.shift().querySelectorAll('.item')];
+            if (items.length !== qr.length) {
+                throw new Error(`section ${subtitle || group.title}: expected ${qr.length} items, found ${items.length}`);
+            }
+            for (const item of items.map((el, i) => withQr(splitLines(el), qr[i]))) {
                 grid.append(item);
                 if (!overflows()) continue;
                 const first = grid.children.length === 1;
