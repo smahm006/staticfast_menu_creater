@@ -5,3 +5,5 @@
 !uv.lock
 !pyproject.toml
 !README.md
+!layout.js
+!layout.css

@@ -1,80 +1,387 @@
 design: Classic
 restaurant:
-  name: SM Home
+  name: Asr
   tagline: For those with an international palate
   address: ""
   phone: ""
   footer: ""
   logo: "/home/smahm/lab/projects/public/staticfast_menu_creater/international_cuisine_logo.jpg"
+# A top-level section is either a list of items, or a mapping of sub-sections
+# to lists of items. Each top-level section starts on a new page, and so does
+# each sub-section of the sections listed here. Other sub-sections flow on.
+# Dishes name a drink and dessert group, matching the sub-sections below.
+page_per_subsection: [main]
 sections:
   breakfast:
-    - item_name: "Falafel w/ Hummus"
+    - item_name: "Falafel"
       item_description: |
-        Note: Using black or white chana
-        Combo: Tea and Croissant
-    - item_name: "Sunny side up egg"
+        Main: Falafel (Black or White Chana)
+        Grain: Khubz / Paratha
+        Sides: Fresh Salad / Pickled Vegetables
+        Sauce: Hummus
+        Drink: Milk Tea
+        Dessert: Leavened Bakes
+    - item_name: "Sunny Side Up Egg"
       item_description: |
-        Grain: Paratah / Brown Bread
-        Combo: Tea and French Toast
+        Main: Sunny Side Up Eggs
+        Grain: Paratha / Brown Bread
+        Sides: Baked Beans / Hash Browns
+        Drink: Milk Tea
+        Dessert: Leavened Bakes
     - item_name: "Mexican Omelette"
       item_description: |
-        Grain: Paratah / Brown Bread
-        Combo: Tea and French Toast
+        Main: Omelette with Peppers, Onion, Tomato & Chilli
+        Grain: Paratha / Brown Bread
+        Sides: Baked Beans / Hash Browns
+        Drink: Milk Tea
+        Dessert: Leavened Bakes
     - item_name: "Mushroom Omelette"
       item_description: |
-        Grain: Paratah / Brown Bread
-        Combo: Tea and French Toast
-    - item_name: "Paratah with curries"
+        Main: Omelette with Mushrooms
+        Grain: Paratha / Brown Bread
+        Sides: Baked Beans / Hash Browns
+        Drink: Milk Tea
+        Dessert: Leavened Bakes
+    - item_name: "Paratha with Curries"
       item_description: |
-        Curry options: Chanay, Bong Pi, Maghaz
-        Grain: Paratah / Brown Bread
-        Combo: Tea and French Toast
-  main_meal:
-    - item_name: "Kima curry"
-      item_description: |
-         optional vegetable (potato, onion, tomato) of choice in curry
-         Grain: Roti / Porrdige
-         Sides: Fresh salad / Green raita
-    - item_name: "Chicken Arvi shorba"
-      item_description: |
-         Grain: Roti / Porrdige
-         Sides: Fresh Salad / Pickle / Kabab
-    - item_name: "Creamy spinach curry"
-      item_description: |
-         Grain: Roti / Rice / Porridge
-         Sides: Fresh Salad / Kabab
-    - item_name: "Chicken lemon curry"
-      item_description: |
-         Grain: Roti / Porridge
-         Sides: Fresh Salad / Soup
-    - item_name: "Kima roti"
-      item_description: |
-         Sides: Sweet or Sour Yoghurt
-    - item_name: "Chinese fried rice"
-      item_description: |
-         Sides: Soup
-    - item_name: "Pasta - Creamy mushroom sauce"
-      item_description: |
-         Sides: Fresh Salad
-  dessert:
-    - item_name: "Biscuits"
-      item_description: "Click, Prince, Party Pik, Marie, Oreo"
-    - item_name: "Croissant"
-    - item_name: "Cinabbon"
-    - item_name: "French Toast"
-    - item_name: "Chocolate Bar"
-      item_description: "Nestle caramel crunch, Snickers"
-  snacks:
-    - item_name: "Fuits"
-      item_description: "Mangoes, Apples, Bananas, Strawberries, Melon, Watermelon"
-    - item_name: "Nuts"
-      item_description: "Almonds, Walnuts, Cashew, Pistachio, Peanut, Macadamia"
-    - item_name: "Chips"
-      item_description: "Lays"
+        Main: Chanay / Bong Paye / Maghaz
+        Grain: Paratha / Brown Bread
+        Sides: Achaar / Raita
+        Drink: Milk Tea
+        Dessert: Leavened Bakes
+  main:
+    south_asian:
+      - item_name: "Qeema Salan"
+        item_description: |
+          Main: Qeema + Veg of choice (Capsicum / Matar / Aloo)
+          Grain: Roti / Porridge
+          Sides: Fresh Salad / Green Raita
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "Qeema Roti"
+        item_description: |
+          Main: Qeema
+          Grain: Roti
+          Sides: Yoghurt / Fresh Salad
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "Chicken Shorba"
+        item_description: |
+          Main: Chicken + Aloo / Arvi
+          Grain: Roti / Porridge
+          Sides: Fresh Salad / Pickle / Kabab
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "Chicken Palak"
+        item_description: |
+          Main: Chicken + Palak + Cream
+          Grain: Roti / Pilau / Porridge
+          Sides: Fresh Salad / Achaar / Kabab
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "Aloo Palak"
+        item_description: |
+          Main: Aloo + Palak + Cream
+          Grain: Roti / Pilau / Porridge
+          Sides: Fresh Salad / Achaar / Kabab
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "Paneer Palak"
+        item_description: |
+          Main: Paneer + Palak + Cream
+          Grain: Roti / Pilau / Porridge
+          Sides: Fresh Salad / Achaar / Kabab
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "Chicken Lemon Curry"
+        item_description: |
+          Main: Chicken + Lemon Gravy
+          Grain: Roti / Porridge
+          Sides: Fresh Salad / Soup
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "Chicken Masala Pilau"
+        item_description: |
+          Main: Chicken + Masala
+          Grain: Rice
+          Sides: Raita / Fresh Salad
+          Drink: Fizzy
+          Dessert: Fruit
+      - item_name: "Chicken Lemon Pilau"
+        item_description: |
+          Main: Chicken + Lemon
+          Grain: Rice
+          Sides: Fresh Salad / Yoghurt
+          Drink: Fizzy
+          Dessert: Fruit
+      - item_name: "Masala Mutton Champay / Ribs"
+        item_description: |
+          Main: Masala Mutton Champay or Ribs
+          Grain: Naan
+          Sides: Raita / Fresh Salad
+          Drink: Fizzy
+          Dessert: Fruit
+      - item_name: "Namkeen Gosht"
+        item_description: |
+          Main: Fried Mutton
+          Grain: Naan
+          Sides: Raita / Fresh Salad
+          Drink: Fizzy
+          Dessert: Fruit
+      - item_name: "Balochi Sajji"
+        item_description: |
+          Main: Roasted Mutton / Chicken
+          Grain: Kabli Pilau
+          Sides: Fresh Salad
+          Sauce: Daqoos Tomato Sauce
+          Drink: Fizzy
+          Dessert: Fruit
+      - item_name: "Rahu Fried Fish"
+        item_description: |
+          Main: Fried Rahu Fish
+          Grain: Naan
+          Sides: Fresh Salad
+          Sauce: Green Chutney
+          Drink: Fizzy
+          Dessert: Fruit
+    middle_eastern:
+      - item_name: "Shawarma"
+        item_description: |
+          Main: Chicken / Beef / Doner / Tuna
+          Grain: Khubz / Saj Bread / Buckwheat Wrap
+          Sides: Potato Fries / Tabouleh Salad / Pickled Vegetables
+          Sauce: Hummus / Tahini / Garlic / Labneh / Cream Cheese
+          Drink: Fizzy
+          Dessert: Unleavened Sweets
+      # Mandi recipe: https://www.youtube.com/watch?v=ENuJ9FH3nbg
+      - item_name: "Arabian Chicken Rice"
+        item_description: |
+          Main: Chicken
+          Grain: Mandi / Madhbi / Madfoon / Kabsa Rice
+          Sides: Fresh Salad / Yoghurt
+          Sauce: Daqoos Tomato Sauce
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      # Recipe: https://www.youtube.com/watch?v=naAuJoFoAFI
+      - item_name: "Turkish Pide"
+        item_description: |
+          Main: Cheese + Meat (Pepperoni / Chicken / Doner)
+          Grain: Whole Wheat Bread
+          Sides: Greek Yoghurt
+          Drink: Milk Tea
+          Dessert: Leavened Bakes
+    african:
+      - item_name: "Mbakbaka (Libyan Pasta)"
+        item_description: |
+          Main: Meat + Tomato Sauce
+          Grain: Ditalini Pasta
+          Sides: Fresh Salad / Tabouleh
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "West African Jollof Rice + Fried Plantains"
+        item_description: |
+          Main: Meat + Fried Plantains
+          Grain: Rice cooked Jollof-style in tomato sauce
+          Sides: Coleslaw / Fresh Salad
+          Drink: Mocktails
+          Dessert: Fruit
+    east_asian:
+      - item_name: "Chinese Chicken Fried Rice"
+        item_description: |
+          Main: Stir Fry Chicken + Roasted Veg
+          Grain: Rice
+          Sides: Soup / Fresh Salad
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "Korean Beef Stir Fry"
+        item_description: |
+          Main: Korean-style BBQ Beef + Roasted Veg
+          Grain: Rice
+          Sides: Soup / Fresh Salad
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "Kung Pao Chicken"
+        item_description: |
+          Main: Kung Pao Chicken + Fried Peanuts
+          Grain: Steamed Rice / Cauliflower Rice
+          Sides: Soup
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+      - item_name: "Chicken Chow Mein"
+        item_description: |
+          Main: Stir Fry Chicken + Vegetables
+          Grain: Egg Noodles / Buckwheat Noodles
+          Sides: Soup
+          Drink: Herbal Kahwa
+          Dessert: Fruit
+    european:
+      - item_name: "Spaghetti and Meatballs"
+        item_description: |
+          Main: Meatballs + Tomato Sauce
+          Grain: Spaghetti
+          Sides: Fresh Salad
+          Drink: Mocktails
+          Dessert: Leavened Bakes
+      - item_name: "Lasagna"
+        item_description: |
+          Main: Mince Meat, Tomato Sauce, Béchamel Sauce, Cheese and Veg
+          Grain: Lasagna Sheets / Fried Eggplant Layers
+          Sides: Soup / Caesar Salad / Garlic Bread / Cheese Crackers
+          Drink: Mocktails
+          Dessert: Leavened Bakes
+      - item_name: "Chicken Alfredo Pasta"
+        item_description: |
+          Main: Chicken + Alfredo Sauce
+          Grain: Small Penne Pasta / Zoodles (Zucchini Noodles)
+          Sides: Roasted Vegetables / Fried Onions
+          Drink: Mocktails
+          Dessert: Leavened Bakes
+      - item_name: "Creamy Mushroom Pasta"
+        item_description: |
+          Main: Mushrooms + Cream Sauce
+          Grain: Pasta
+          Sides: Fresh Salad
+          Drink: Mocktails
+          Dessert: Leavened Bakes
+      - item_name: "Pizza"
+        item_description: |
+          Main: Cheese, Sauce and Toppings of choice
+          Grain: Regular Crust / Almond Flour Crust / Chicken Mince Crust
+          Sides: Fresh Salad / Fries
+          Drink: Fizzy
+          Dessert: Unleavened Sweets
+      - item_name: "Roasted Garlic & Tomato Soup"
+        item_description: |
+          Main: Roasted Garlic + Tomato + Basil + Cream
+          Grain: Garlic Bread
+          Sides: Cheese Crackers
+          Drink: Mocktails
+          Dessert: Leavened Bakes
+      - item_name: "Spinach & Mushroom Quiche"
+        item_description: |
+          Main: Spinach + Mushroom + Egg
+          Grain: Shortcrust Pastry / Crustless
+          Sides: Hummus / Labneh Dip
+          Drink: Milk Tea
+          Dessert: Leavened Bakes
+      - item_name: "Roast Garlic Butter Chicken"
+        item_description: |
+          Main: Whole Roast Chicken
+          Grain: Dinner Rolls
+          Sides: Baked Carrots / Peas / Labneh
+          Drink: Mocktails
+          Dessert: Leavened Bakes
+      - item_name: "Chicken Pie"
+        item_description: |
+          Main: Chicken + Béchamel Sauce
+          Grain: Puff Pastry
+          Sides: Garlic Bread / Salad
+          Drink: Mocktails
+          Dessert: Leavened Bakes
+    north_american:
+      - item_name: "Smash Burger"
+        item_description: |
+          Main: Beef Mince Patty + Mayo Sauce
+          Grain: Brioche Bun / Lettuce Wrap
+          Sides: Fries / Coleslaw
+          Drink: Fizzy
+          Dessert: Unleavened Sweets
+      - item_name: "Zinger Burger"
+        item_description: |
+          Main: Fried Chicken Patty + Big Mac Sauce + Relish + Lettuce
+          Grain: Sesame Bun
+          Sides: Fries / Coleslaw
+          Drink: Fizzy
+          Dessert: Unleavened Sweets
+      - item_name: "Fish Burger"
+        item_description: |
+          Main: Fried Fish Fillet + Gherkins
+          Grain: Brioche Bun
+          Sides: Fries / Coleslaw
+          Sauce: Tartar Sauce
+          Drink: Fizzy
+          Dessert: Unleavened Sweets
+      - item_name: "Fried & Glazed Chicken Wings"
+        item_description: |
+          Main: Fried & Glazed Chicken Wings
+          Grain: Dinner Rolls
+          Sides: Coleslaw
+          Drink: Fizzy
+          Dessert: Unleavened Sweets
+      - item_name: "Chicken Tender Plate"
+        item_description: |
+          Main: Crispy Chicken Tenders
+          Grain: Cheesy Garlic Bread
+          Sides: Fries / Coleslaw
+          Sauce: Honey Mustard / BBQ
+          Drink: Fizzy
+          Dessert: Unleavened Sweets
+      - item_name: "Chili's-Style Chicken Steak"
+        item_description: |
+          Main: Pan-fried Chicken Steak + Gravy + Sautéed Vegetables
+          Grain: Corn / Buns
+          Sides: Mashed Potatoes / Garlic Bread / Fries
+          Drink: Fizzy
+          Dessert: Leavened Bakes
+      - item_name: "Beef Steak"
+        item_description: |
+          Main: Pan-fried Beef Steak + Gravy
+          Grain: Garlic Bread
+          Sides: Sautéed Vegetables / Mashed Potatoes
+          Drink: Fizzy
+          Dessert: Leavened Bakes
+      - item_name: "Chipotle-Style Bowl"
+        item_description: |
+          Main: Shredded Chicken + Chopped Vegetables + Dressing
+          Grain: Quinoa / Rice
+          Sides: Corn / Black Beans
+          Drink: Mocktails
+          Dessert: Fruit
   drinks:
-    - item_name: "Tea/Kahwa"
-      item_description: "Milk, Black, Ginger, Lemon, Orange, Mint"
-    - item_name: "Soda"
-      item_description: "Coca-cola, Pepsi, 7Up, Sprite, Fanta, Marinda, Mountain Dew"
-    - item_name: "Mocktails"
-      item_description: "Pineapple Lime Fizz, Cranberry Ginger Lime, Cucumber Mint Cooler"
+    milk_tea:
+      - item_name: "Milk Tea"
+      - item_name: "Black Tea"
+    herbal_kahwa:
+      - item_name: "Ginger Kahwa"
+      - item_name: "Lemon Kahwa"
+      - item_name: "Orange Kahwa"
+      - item_name: "Mint Kahwa"
+    fizzy:
+      - item_name: "Coca-Cola"
+      - item_name: "Pepsi"
+      - item_name: "7Up"
+      - item_name: "Sprite"
+      - item_name: "Fanta"
+      - item_name: "Mirinda"
+      - item_name: "Mountain Dew"
+    mocktails:
+      - item_name: "Pineapple Lime Fizz"
+      - item_name: "Cranberry Ginger Lime"
+      - item_name: "Cucumber Mint Cooler"
+  dessert:
+    leavened_bakes:
+      - item_name: "Croissant"
+      - item_name: "Cinnabon"
+      - item_name: "French Toast"
+    unleavened_sweets:
+      - item_name: "Biscuits"
+        item_description: "Click, Prince, Party Pik, Marie, Oreo"
+      - item_name: "Chocolate Bar"
+        item_description: "Nestle Caramel Crunch, Snickers"
+    fruit:
+      - item_name: "Mangoes"
+      - item_name: "Apples"
+      - item_name: "Bananas"
+      - item_name: "Strawberries"
+      - item_name: "Melon"
+      - item_name: "Watermelon"
+    nuts:
+      - item_name: "Almonds"
+      - item_name: "Walnuts"
+      - item_name: "Cashew"
+      - item_name: "Pistachio"
+      - item_name: "Peanut"
+      - item_name: "Macadamia"
+    snacks:
+      - item_name: "Chips"
+        item_description: "Lays"

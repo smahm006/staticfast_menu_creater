@@ -1,0 +1,25 @@
+/* Injected into the staticfast Classic render before the PDF capture.
+   layout.js rebuilds the body into fixed letter-size pages using these classes. */
+
+body { padding: 0 !important; min-height: 0 !important; }
+
+.sm-page {
+    width: 8.5in; height: 11in; padding: 0.4in;
+    overflow: hidden; background: #faf8f2;
+}
+.sm-frame { height: calc(100% - 12px); overflow: hidden; }
+
+/* Section titles are boxed; the sections themselves are not. */
+.section-title, .sm-sub-title { border: none; padding: 0; text-align: center; }
+.section-title { margin-bottom: 16px; }
+.section-title span { display: inline-block; border: 1px solid #b6a988; padding: 4px 22px; }
+.sm-sub-title { margin-bottom: 14px; }
+.sm-sub-title span {
+    display: inline-block; border: 1px solid #d6cab1; padding: 2px 16px;
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-variant: small-caps;
+    font-size: 18px; letter-spacing: 1.5px; color: #5a503c;
+}
+
+.sm-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; }
+.item-desc { white-space: pre-line; max-width: none; }
+

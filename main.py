@@ -1,7 +1,12 @@
+import argparse
+from pathlib import Path
+
 import yaml
 from playwright.sync_api import Page, sync_playwright
 
 DESIGNS = ["Elegant", "Modern", "Classic", "Casual"]
+LAYOUT_CSS = Path(__file__).with_name("layout.css").read_text()
+LAYOUT_JS = Path(__file__).with_name("layout.js").read_text()
 
 
 class MenuConfigError(Exception):
@@ -59,21 +64,48 @@ def section_title(key: str) -> str:
     return key.replace("_", " ").title()
 
 
-def add_menu_sections(config: dict, page: Page):
+def parse_groups(config: dict) -> list[dict]:
+    """Top-level sections, each a list of items or a mapping of sub-sections to lists of items.
+
+    Returns [{"title", "page_per_subsection", "subsections": [{"title": str | None, "items": list}]}],
+    where a None sub-section title means the items sit directly under the top-level section.
+    """
     sections = config.get("sections")
     if not sections:
         raise MenuConfigError("sections key not found or empty")
-    for s, (key, items) in enumerate(sections.items()):
+    page_per_subsection = config.get("page_per_subsection", [])
+    unknown = set(page_per_subsection) - set(sections)
+    if unknown:
+        raise MenuConfigError(f"page_per_subsection names unknown sections: {sorted(unknown)}")
+    groups = []
+    for key, value in sections.items():
+        if isinstance(value, dict):
+            if not value:
+                raise MenuConfigError(f"section '{key}' has no sub-sections")
+            subsections = [{"title": section_title(k), "items": v} for k, v in value.items()]
+        else:
+            subsections = [{"title": None, "items": value}]
+        groups.append({
+            "title": section_title(key),
+            "page_per_subsection": key in page_per_subsection,
+            "subsections": subsections,
+        })
+    return groups
+
+
+def add_menu_sections(groups: list[dict], page: Page):
+    flat = [(sub["title"] or group["title"], sub["items"]) for group in groups for sub in group["subsections"]]
+    for s, (title, items) in enumerate(flat):
         if not items:
-            raise MenuConfigError(f"section '{key}' has no items")
+            raise MenuConfigError(f"section '{title}' has no items")
         if s > 0:
             page.get_by_role("button", name="+ Add Section").click()
             settle(page)
-        page.locator(f'[wire\\:model\\.lazy="sections.{s}.name"]').fill(section_title(key))
+        page.locator(f'[wire\\:model\\.lazy="sections.{s}.name"]').fill(title)
         settle(page)
         for i, item in enumerate(items):
             if not item.get("item_name"):
-                raise MenuConfigError(f"item {i} in section '{key}' has no item_name")
+                raise MenuConfigError(f"item {i} in section '{title}' has no item_name")
             if i > 0:
                 page.locator(f'[wire\\:click="addItem({s})"]').click()
                 settle(page)
@@ -99,23 +131,37 @@ IFRAME_READY = """
 """
 
 
-def download_menu_pdf(config: dict, page: Page):
+def download_menu_pdf(config: dict, groups: list[dict], page: Page, output: str):
     page.get_by_role("button", name="Generate Menu").click()
     settle(page)
     page.wait_for_function(IFRAME_READY, arg=config["restaurant"]["name"])
     frame = next(f for f in page.frames if "/menu/render/" in f.url)
-    frame.add_style_tag(content=".item-desc { white-space: pre-line; }")
+    frame.add_style_tag(content=LAYOUT_CSS)
+    layout = [
+        {
+            "title": g["title"],
+            "pagePerSubsection": g["page_per_subsection"],
+            "subsections": [sub["title"] for sub in g["subsections"]],
+        }
+        for g in groups
+    ]
+    pages = frame.evaluate(LAYOUT_JS, layout)
+    print(f"Laid out {pages} pages")
     with page.expect_download() as download_info:
         page.get_by_role("button", name="Download PDF").click()
     download = download_info.value
-    download.save_as(download.suggested_filename)
-    return download.suggested_filename
+    download.save_as(output)
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Build a menu PDF with staticfast from a YAML config")
+    parser.add_argument("config", nargs="?", default="menu.yaml")
+    parser.add_argument("-o", "--output", default="menu.pdf")
+    args = parser.parse_args()
+    with open(args.config) as file:
+        config = yaml.safe_load(file)
+    groups = parse_groups(config)
     with sync_playwright() as p:
-        with open('menu.yaml', 'r') as file:
-            config = yaml.safe_load(file)
         browser = p.chromium.launch(headless=True)
         context = browser.new_context()
         page = context.new_page()
@@ -123,9 +169,9 @@ def main():
         settle(page)
         choose_design(config, page)
         add_restaurant_details(config, page)
-        add_menu_sections(config, page)
-        path = download_menu_pdf(config, page)
-        print(f"Saved {path}")
+        add_menu_sections(groups, page)
+        download_menu_pdf(config, groups, page, args.output)
+        print(f"Saved {args.output}")
         context.close()
         browser.close()
 
